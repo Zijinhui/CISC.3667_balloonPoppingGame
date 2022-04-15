@@ -5,7 +5,7 @@ using UnityEngine;
 public class thunderMovement : MonoBehaviour
 {
     private Vector2 screenBounds;
-    public float speed = 100f;
+    public float speed = 12f;
     [SerializeField] Rigidbody2D rigid;
     private float objectWidth;
     private float objectHeight;

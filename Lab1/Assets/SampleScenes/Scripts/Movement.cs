@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour
     [SerializeField] float movement;
     [SerializeField] bool isGrounded = true;
     [SerializeField] bool jumpPressed = false;
-    [SerializeField] float jumpForce = 1500.0f;
+    [SerializeField] float jumpForce = 600f;
     [SerializeField] bool isFacingRight = true;
 
     // Start is called before the first frame update
@@ -17,7 +17,7 @@ public class Movement : MonoBehaviour
     {
         if (rigid == null)
             rigid = GetComponent<Rigidbody2D>();
-        speed = 40;
+        speed = 10;
     }
 
     // Update is called once per frame
