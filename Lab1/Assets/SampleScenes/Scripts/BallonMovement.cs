@@ -54,7 +54,7 @@ public class BallonMovement : MonoBehaviour
         }
         //Debug.Log(transform.position.x);
 
-        Debug.Log("Balloon Scale: " + gameObject.transform.localScale);
+        //Debug.Log("Balloon Scale: " + gameObject.transform.localScale);
         // If the balloon increase to a limit scale, destroy it and score=0
         if (gameObject.transform.localScale.x > 3.0f) {
             Destroy(gameObject);

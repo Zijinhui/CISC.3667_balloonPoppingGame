@@ -6,12 +6,11 @@ public class thunderMovement : MonoBehaviour
 {
     private Vector2 screenBounds;
     public float speed = 12f;
-    [SerializeField] Rigidbody2D rigid;
+    public Rigidbody2D rb;
     private float objectWidth;
     private float objectHeight;
-    [SerializeField] bool isFacingRight = true;
     public Collider2D coll;
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +24,7 @@ public class thunderMovement : MonoBehaviour
             Debug.Log(coll.isTrigger);
         }
 
+        rb.velocity = transform.right * speed;
         
     }
 
@@ -32,24 +32,16 @@ public class thunderMovement : MonoBehaviour
     void Update()
     {
         Debug.Log("Pin: "+objectWidth);
-        if (transform.position.x >= screenBounds.x - objectWidth - 0.06) {
-            isFacingRight = false;
+        if (transform.position.x >= screenBounds.x - objectWidth - 0.04 || transform.position.x <= screenBounds.x*-1 + objectWidth + 0.04) {
+            //isFacingRight = false;
             Destroy(gameObject);
         }
-        if (transform.position.x <= screenBounds.x*-1 + objectWidth + 0.06) {
-            isFacingRight = true;
-            Destroy(gameObject);
-        }
+        // if (transform.position.x <= screenBounds.x*-1 + objectWidth + 0.06) {
+        //     isFacingRight = true;
+        //     Destroy(gameObject);
+        // }
+        
     }
-
-    void FixedUpdate() {
-    //     if (isFacingRight) {
-    //         transform.Translate(Vector2.right * Time.deltaTime*9f);
-    //     }
-    //     if (!isFacingRight) {
-    //         transform.Translate(Vector2.left * Time.deltaTime*9f);
-    // }
-}
 
     private void OnTriggerEnter2D(Collider2D collider) {
         if(collider.gameObject.CompareTag("Target")) {
