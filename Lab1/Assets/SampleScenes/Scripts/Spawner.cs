@@ -11,7 +11,7 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Movement = GameObject.FindGameObjectWithTag("Player");
+        
     }
 
     // Update is called once per frame
@@ -31,7 +31,7 @@ public class Spawner : MonoBehaviour
         Vector2 position = new Vector2(x,y);
         
         // apply the rotation of firePoint(located at pikachu) as the the correct pin's rotation
-        Instantiate(thunderMovement, firePoint.position, firePoint.rotation);
+        Instantiate(thunderMovement, position, firePoint.rotation);
         
     }   
 }

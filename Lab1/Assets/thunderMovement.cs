@@ -36,11 +36,6 @@ public class thunderMovement : MonoBehaviour
             //isFacingRight = false;
             Destroy(gameObject);
         }
-        // if (transform.position.x <= screenBounds.x*-1 + objectWidth + 0.06) {
-        //     isFacingRight = true;
-        //     Destroy(gameObject);
-        // }
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collider) {
