@@ -11,13 +11,22 @@ public class Movement : MonoBehaviour
     [SerializeField] bool jumpPressed = false;
     [SerializeField] float jumpForce = 600f;
     [SerializeField] bool isFacingRight = true;
+    [SerializeField] Animator animator;
+
+    const bool walking =false;
 
     // Start is called before the first frame update
     void Start()
     {
         if (rigid == null)
             rigid = GetComponent<Rigidbody2D>();
+
+        if (animator == null)
+            animator = GetComponent<Animator>();
+            
         speed = 10;
+
+        animator.SetBool("walking", true);
     }
 
     // Update is called once per frame
@@ -26,6 +35,12 @@ public class Movement : MonoBehaviour
         movement = Input.GetAxis("Horizontal");
         if(Input.GetButtonDown("Jump")) {
             jumpPressed = true;
+        }
+        
+        if(movement == 0) {
+            animator.SetBool("walking", false);
+        }else {
+            animator.SetBool("walking", true);
         }
     }
 

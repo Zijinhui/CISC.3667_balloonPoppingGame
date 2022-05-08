@@ -36,6 +36,7 @@ public class BallonMovement : MonoBehaviour
         InvokeRepeating("resizeBalloon", 0, 1);
 
         level = SceneManager.GetActiveScene().buildIndex;
+        Debug.Log("Level: "+level);
     }
 
     // Update is called once per frame
@@ -44,7 +45,7 @@ public class BallonMovement : MonoBehaviour
         Vector2 screenOrigo = Camera.main.ScreenToWorldPoint(Vector2.zero);
 
         //Right boundary
-        if (transform.position.x >= screenBounds.x - objectWidth) {
+        if (transform.position.x >= screenBounds.x - objectWidth-0.53f) {
             isFacingRight = false;
         }
         //Left boundary
@@ -52,6 +53,14 @@ public class BallonMovement : MonoBehaviour
             isFacingRight = true;
         }
         //Debug.Log(transform.position.x);
+
+        Debug.Log("Balloon Scale: " + gameObject.transform.localScale);
+        // If the balloon increase to a limit scale, destroy it and score=0
+        if (gameObject.transform.localScale.x > 3.0f) {
+            Destroy(gameObject);
+            //restart the current level
+            SceneManager.LoadScene(level);
+        }
     }
 
     void FixedUpdate() {
@@ -61,9 +70,7 @@ public class BallonMovement : MonoBehaviour
         }
         if (!isFacingRight) {
             transform.Translate(Vector2.left * Time.deltaTime*1f);
-    }
-
-        
+    }     
 }
 
     void resizeBalloon() {
@@ -83,7 +90,10 @@ public class BallonMovement : MonoBehaviour
             controller.GetComponent<ScoreTracker>().UpdateScore();
 
             // move to next level
-            SceneManager.LoadScene(level+1);
+            if (level < 5) {
+                SceneManager.LoadScene(level+1);
+            }
+            
         }    
     }
 }

@@ -20,7 +20,8 @@ public class ScoreTracker : MonoBehaviour
     void Start()
     {
         //scoreTxt = this.GetComponent<Text>();
-        level = SceneManager.GetActiveScene().buildIndex;
+        // Level_1 Scene locates at index 3
+        level = SceneManager.GetActiveScene().buildIndex - 2;
         score = PersistentData.Instance.GetScore();
 
         //display score
@@ -49,7 +50,10 @@ public class ScoreTracker : MonoBehaviour
     }
 
     public void ChangeValue() {
-        value -= 1;
+        //avoid negative score
+        if(value > 0) {
+            value -= 1;
+        }     
     }
 
     public void DisplayScore() {

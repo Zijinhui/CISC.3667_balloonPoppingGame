@@ -6,6 +6,7 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] GameObject thunderMovement;
     [SerializeField] GameObject Movement; //pikachu
+    public Transform pinPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,9 @@ public class Spawner : MonoBehaviour
         int x = (int)Movement.transform.position.x;
         int y = (int)Movement.transform.position.y;
         Vector2 position = new Vector2(x,y);
-        Instantiate(thunderMovement, position, Quaternion.identity);
+        // Instantiate(thunderMovement, position, Quaternion.identity);
+        Instantiate(thunderMovement, position, pinPoint.rotation);
+        
     }
 
    // if the pin touch the screen boundrary, destroy it.
