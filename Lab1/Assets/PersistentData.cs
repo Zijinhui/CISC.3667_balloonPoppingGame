@@ -8,6 +8,7 @@ public class PersistentData : MonoBehaviour
     [SerializeField] int playerScore;
     [SerializeField] string playerName;
 
+
     public static PersistentData Instance;
 
     private void Awake() {
@@ -23,6 +24,7 @@ public class PersistentData : MonoBehaviour
     void Start()
     {
         playerScore = 0;
+
     }
 
     // Update is called once per frame
@@ -36,5 +38,13 @@ public class PersistentData : MonoBehaviour
 
     public int GetScore() {
         return playerScore;
+    }
+
+    public void SetName(string s) {
+        playerName = s;
+    }
+
+    public string GetName(){
+        return playerName;
     }
 }

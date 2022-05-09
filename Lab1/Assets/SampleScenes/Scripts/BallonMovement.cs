@@ -92,7 +92,10 @@ public class BallonMovement : MonoBehaviour
             // move to next level
             if (level < 5) {
                 SceneManager.LoadScene(level+1);
+            }else {
+                SceneManager.LoadScene("Rank"); //finish the game
             }
+            
             
         }    
     }

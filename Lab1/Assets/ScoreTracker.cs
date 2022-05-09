@@ -19,15 +19,16 @@ public class ScoreTracker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //scoreTxt = this.GetComponent<Text>();
         // Level_1 Scene locates at index 3
         level = SceneManager.GetActiveScene().buildIndex - 2;
         score = PersistentData.Instance.GetScore();
 
         //display score
         DisplayScore();
-        //display score
+        //display level
         DisplayLevel();
+        //display name
+        DisplayName();
     }
 
     // Update is called once per frame
@@ -66,7 +67,7 @@ public class ScoreTracker : MonoBehaviour
 
      public void DisplayName()
     {
-        //nameTxt.text = "Hi, " + PersistentData.Instance.GetName();
+        nameTxt.text = "Player: " + PersistentData.Instance.GetName();
     }
 
 }
