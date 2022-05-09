@@ -65,11 +65,11 @@ public class BallonMovement : MonoBehaviour
 
     void FixedUpdate() {
         if (isFacingRight) {
-            // change the speed of balloon
-            transform.Translate(Vector2.right * Time.deltaTime*1f);
+            // change the speed of balloon depend on the level
+            transform.Translate(Vector2.right * Time.deltaTime*(level-2));
         }
         if (!isFacingRight) {
-            transform.Translate(Vector2.left * Time.deltaTime*1f);
+            transform.Translate(Vector2.left * Time.deltaTime*(level-2));
     }     
 }
 
